@@ -1,0 +1,240 @@
+# 3rd Replit Starter Account – Continuity + Monetization Prompt
+
+## Mission
+
+You are continuing the build of a **premium, mobile-first marketplace and provider operating system** for:
+
+- mobile foot technicians  
+- mobile foot spa providers  
+- pedicure specialists  
+- in-home foot wellness professionals  
+
+The project is already connected to a Git repository and **has core documentation** in `docs/` plus a master spec file. Your job is to:
+
+- Respect all existing architecture and notes.
+- Use the repo documentation as your “intuition amplifier”.
+- Keep the build on a path that real providers will happily pay for.
+- Maintain portability across all future environments (other Replit accounts, local, other AI agents, Railway, etc.).
+
+Git is the source of truth. Replit is just the current workbench.
+
+---
+
+## Step 1 – Read the brain of the project
+
+Before writing new code:
+
+1. Open and read at least:
+
+   - `README.md`
+   - `docs/product/vision.md`
+   - `docs/ux/portal-rules.md`
+   - `docs/ux/status-models.md`
+   - `docs/db/schema-notes.md`
+   - `docs/db/migration-log.md`
+   - `docs/ops/deployment.md`
+   - `docs/ops/environment-variables.md`
+   - `docs/ops/agent-handoff.md`
+   - Any master spec file (e.g. `mobile-foot-care-marketplace-master-spec.md`)
+
+2. Treat these files as **the project’s brain**:
+   - Do not ignore or contradict them.
+   - Extend them when you add new behavior.
+   - Keep them updated so a new agent can understand the system in 10–15 minutes.
+
+3. Pull latest from Git before major changes.
+
+---
+
+## Step 2 – Monetization rules (non‑negotiable)
+
+This platform must ship with real revenue levers that providers in this niche will recognize and pay for.
+
+### 1. Commission on bookings
+
+- Implement a commission-based model:
+  - Platform earns a % on each **completed booking** (target 10–15%).
+- Commission must be visible in:
+  - booking records,
+  - provider earnings views,
+  - payout summaries.
+
+### 2. Subscription tiers for providers
+
+Create **tiered plans** and wire them into the data model and UI:
+
+- **Free**
+  - Basic listing.
+  - Limited bookings per month.
+  - Standard commission rate.
+
+- **Pro**
+  - Better search/listing placement.
+  - Repeat-client tools (rebook prompts, simple CRM).
+  - Lower commission or better payout.
+  - Basic analytics (bookings/week, earnings trend).
+
+- **Premium**
+  - Featured placement options.
+  - Advanced analytics (retention, top services, zones).
+  - Priority support & faster verification.
+  - Best commission terms.
+
+Subscription tier must control:
+- what features providers see,
+- what price/commission they pay,
+- where they appear in the marketplace.
+
+### 3. Featured listings
+
+- Add a way for providers to pay for **featured** spots:
+  - “Top in city”, “Featured provider”, homepage tiles.
+- Admin can configure featured flags.
+- Public pages should visually differentiate featured providers.
+
+### 4. Lead credits (future-ready)
+
+- Add hooks so providers can **buy credits for leads** later:
+  - credit balance field,
+  - basic UI placeholder in provider dashboard.
+- You do not need a full lead-routing engine yet, just a data/UI path.
+
+### 5. Transaction / payout fee hooks
+
+- Support small flat fees on payouts (e.g. $1 per withdrawal).
+- Show these transparently in provider earnings and payout views.
+
+---
+
+## Step 3 – Provider value rules
+
+Every feature you add must answer:
+
+> “Which provider pain am I removing?”
+
+Must-have provider-facing value:
+
+- **Service menu control**
+  - Services with duration, price, add-ons, and travel fees.
+
+- **Schedule & recurring visits**
+  - Availability rules and recurring bookings for routine foot care.
+
+- **Travel zones & buffers**
+  - Radius/zone controls plus buffer times between visits.
+
+- **Client CRM**
+  - Repeat clients, history, notes, preferences.
+  - “Due for rebook” list.
+
+- **Reviews & trust badges**
+  - Ratings, written reviews.
+  - Verification badges (e.g. verified, senior-friendly, mobile specialist).
+
+- **Earnings & payouts**
+  - Clear overview of income, commission, subscription fees, payout status.
+
+- **Simple marketing levers**
+  - Featured listing toggle (when allowed by plan).
+  - Simple promotions or rebooking prompts.
+
+If a feature does not clearly improve one of these, it should not be prioritized now.
+
+---
+
+## Step 4 – Premium UX rules (funded startup feel)
+
+The app must feel like a funded startup: **premium, minimal, mobile-first, trust-first**.
+
+- Dashboards:
+  - Top section: 3–5 key metrics + actions.
+  - Below: lists, details, timelines, and feeds.
+
+- Mobile-first:
+  - All primary flows must work on small screens.
+  - Avoid hover-only interactions for core actions.
+
+- Trust-first:
+  - Provider verification status is obvious.
+  - Booking status is clearly labeled (requested, confirmed, en route, in service, completed).
+  - “Who is coming” is clear: name, photo, credentials, ratings.
+
+- Use:
+  - branded header, status board, progress timeline, activity feed  
+  only where they **increase clarity and trust**, not as decoration.
+
+---
+
+## Step 5 – Early launch & income focus
+
+Keep the build focused on **month‑one viability**, not speculative features.
+
+Priority outcomes:
+
+1. Provider onboarding that works end‑to‑end:
+   - Apply → submit docs → admin review → approval → live listing.
+
+2. Booking → payment → review loop:
+   - Client can search, book, pay, get the visit, and leave a review.
+
+3. Provider income visibility:
+   - Providers see bookings, earnings, commissions, subscription status, and payouts.
+
+4. At least one monetization lever live:
+   - Commission **or** Pro subscriptions must be wired into the product and visible in the UI.
+
+Do not build deep extras until these outcomes are real.
+
+---
+
+## Step 6 – Development & continuity rules
+
+- Use repo docs as guidance; update them when behavior changes.
+- Centralize:
+  - status enums,
+  - role rules,
+  - commission logic,
+  - subscription logic.
+- Keep routes consistent (public, client, provider, admin).
+- Align schema changes with `schema-notes` and `migration-log`.
+- Maintain `.env.example` and deployment docs.
+- Use checkpoint commits and push to Git regularly.
+- Update `docs/ops/agent-handoff.md` at the end of each major session.
+
+---
+
+## Step 7 – This account’s build focus
+
+During this 3rd starter account, prioritize:
+
+1. **Subscription tiers wired end‑to‑end**:
+   - Data: provider plan field, feature gates, price.
+   - UI: plan display, upgrade path in provider dashboard.
+
+2. **Commission logic & display**:
+   - Data: commission fields on bookings/payouts.
+   - UI: earnings summaries showing net, commission, fees.
+
+3. **Provider onboarding/verification flow**:
+   - Forms, doc upload, admin screen, approval, listing visibility.
+
+4. **Booking + payment + review path**:
+   - At least one core service can be booked and paid end‑to‑end.
+
+5. **Docs updated** so a new agent can instantly see:
+   - how money flows,
+   - which features drive provider value,
+   - what is already done and what’s next.
+
+---
+
+## Acceptance criteria for this account
+
+When this Replit starter account hits its limit:
+
+- Subscription tiers exist in data and UI.
+- Commission logic is implemented and visible to providers.
+- Provider onboarding and verification are functional.
+- Booking → payment → review loop is close to or fully end‑to‑end.
+- All code and docs are committed and pushed to Git.
+- The repo clearly shows a product that real mobile foot service providers can understand, trust, and pay for.
